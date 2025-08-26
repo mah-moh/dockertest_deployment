@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+
+  service2:
+    image: maheen397/dockertest1:latest
+    container_name: dockertest1
+    restart: always
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"   # expose Nginx on host
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - service2
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
