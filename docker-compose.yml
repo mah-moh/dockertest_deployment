@@ -1,6 +1,12 @@
 version: '3.9'
 
 services:
+  service1:
+    image: maheen397/dockertest:latest
+    container_name: dockertest
+    restart: always
+    networks:
+      - app-network
 
   service2:
     image: maheen397/dockertest1:latest
@@ -18,6 +24,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
+      - service1
       - service2
     networks:
       - app-network
