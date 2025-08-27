@@ -2,7 +2,7 @@ name: Deploy Services
 
 on:
   repository_dispatch:
-    types: [deploy-dockertest1, deploy-dockertest1-release]
+    types: [deploy-dockertest, deploy-dockertest1, deploy-dockertest1-release]
 
 jobs:
   deploy:
